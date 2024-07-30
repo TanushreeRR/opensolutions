@@ -3,8 +3,7 @@ import connect from "@/utils/db";
 import { NextResponse } from "next/server";
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export const POSTA = async (request: any) => {
-  if (request.method=='POST'){
+export const POST = async (request: any) => {
   const { name, contact, email, title, description} = await request.json();
 
   await connect();
@@ -26,7 +25,7 @@ export const POSTA = async (request: any) => {
       status: 500,
     });
   }
-}
+
 };
 
 export async function GET() {

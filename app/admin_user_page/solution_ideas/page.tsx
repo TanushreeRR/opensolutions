@@ -53,6 +53,28 @@ export default function EntriesPage() {
     setIsEditing(true);
   };
 
+  const handleDeleteClick = async () => {
+    if (!selectedEntry) return;
+  
+    try {
+      const response = await fetch(`/api/idea/${selectedEntry._id}`, {
+        method: 'DELETE',
+      });
+  
+      if (response.ok) {
+        setEntries((prevEntries) =>
+          prevEntries.filter((entry) => entry._id !== selectedEntry._id)
+        );
+        handleCloseModal();
+      } else {
+        console.error("Failed to delete the entry.");
+      }
+    } catch (error) {
+      console.error("An error occurred while deleting the entry:", error);
+    }
+  };
+  
+
   const handleSaveClick = async () => {
     if (!selectedEntry) return;
 
@@ -157,9 +179,17 @@ export default function EntriesPage() {
                 Save
               </button>
             ) : (
+              <div>
               <button onClick={handleEditClick} style={{ marginTop: '10px', padding: '10px', backgroundColor: '#4d4dd3', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
                 Edit
               </button>
+              <button
+      onClick={handleDeleteClick}
+      style={{ marginTop: '10px', padding: '10px', backgroundColor: 'red', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+    >
+      Delete
+    </button>
+              </div>
             )}
           </div>
         )}

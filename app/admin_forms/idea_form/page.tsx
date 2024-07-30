@@ -24,6 +24,9 @@ const Register = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          name: "John Doe",
+          contact: "467365",
+          email: "sfgrvrth",
           title,
           description,
         }),
