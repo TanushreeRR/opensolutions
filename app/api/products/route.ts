@@ -1,19 +1,14 @@
-import Idea from "@/models/Ideas";
+import Product from "@/models/Product";
 import connect from "@/utils/db";
 import { NextResponse } from "next/server";
-import { NextApiRequest, NextApiResponse } from 'next';
 
-export const POSTA = async (request: any) => {
-  if (request.method=='POST'){
+export const POST = async (request: any) => {
   const { name, contact, email, title, description} = await request.json();
 
   await connect();
 
    
-  const newUser = new Idea({
-    name,
-    contact,
-    email,
+  const newUser = new Product({
     title,
     description,
   });
@@ -25,13 +20,12 @@ export const POSTA = async (request: any) => {
     return new NextResponse(err, {
       status: 500,
     });
-  }
+  
 }
 };
 
 export async function GET() {
   await connect();
-  const entries = await Idea.find({});
+  const entries = await Product.find({});
   return NextResponse.json(entries);
 }
-

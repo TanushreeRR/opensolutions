@@ -21,7 +21,7 @@ const Register = () => {
     const description = e.target[4].value;
 
     try {
-      const res = await fetch("/api/ideas", {
+      const res = await fetch("/api/solution", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,9 +53,8 @@ const Register = () => {
       <div className="flex min-h-screen flex-col items-center justify-between p-24  bg-[#1c1c62] text-white">
         <div className="bg-white p-8 rounded shadow-md w-97">
         {submittedMessage && <p className="text-green-500 font-semibold text-center text-4xl mb-4">{submittedMessage}</p>}
-          <h1 className="text-3xl text-center font-semibold text-black">Ideate!</h1>
-          <h3 className="text text-center text-black">From a user&apos;s point of view, if you feel the need for any new service/product from our company which would have a positive imapct on our customers, propose it here!</h3>
-          <h3 className="text text-center mb-8 text-black">Give a title for your idea, and let us know about it in the description!.</h3>
+          
+          <h2 className="text text-center mb-8 text-black">Mention the idea in title, and write about your solution in the description.</h2>
           <form onSubmit={handleSubmit}>
             <input
               type="text"

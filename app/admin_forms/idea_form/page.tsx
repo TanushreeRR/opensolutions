@@ -14,11 +14,8 @@ const Register = () => {
   
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const name = e.target[0].value;
-    const contact = e.target[1].value;
-    const email = e.target[2].value;
-    const title = e.target[3].value;
-    const description = e.target[4].value;
+    const title = e.target[0].value;
+    const description = e.target[1].value;
 
     try {
       const res = await fetch("/api/ideas", {
@@ -27,9 +24,6 @@ const Register = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name,
-          contact,
-          email,
           title,
           description,
         }),
@@ -40,7 +34,7 @@ const Register = () => {
         setSubmittedMessage("Form Submitted"); // Set submission confirmation message
         setTimeout(() => {
           setSubmittedMessage(""); // Clear the message after 3 seconds
-          router.push("/user_dashboard"); // Redirect to the dashboard
+          router.push("/admin_dashboard"); // Redirect to the dashboard
         }, 3000); // Delay in milliseconds
       }
     } catch (error) {
@@ -53,28 +47,11 @@ const Register = () => {
       <div className="flex min-h-screen flex-col items-center justify-between p-24  bg-[#1c1c62] text-white">
         <div className="bg-white p-8 rounded shadow-md w-97">
         {submittedMessage && <p className="text-green-500 font-semibold text-center text-4xl mb-4">{submittedMessage}</p>}
-          <h1 className="text-3xl text-center font-semibold text-black">Ideate!</h1>
-          <h3 className="text text-center text-black">From a user&apos;s point of view, if you feel the need for any new service/product from our company which would have a positive imapct on our customers, propose it here!</h3>
-          <h3 className="text text-center mb-8 text-black">Give a title for your idea, and let us know about it in the description!.</h3>
+          
           <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
-              placeholder="Name"
-              required
-            />
-            <input
-              type="text"
-              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
-              placeholder="Contact"
-              required
-            />
-            <input
-              type="text"
-              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
-              placeholder="Email"
-              required
-            />
+            
+            
+            
             <input
               type="text"
               className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"

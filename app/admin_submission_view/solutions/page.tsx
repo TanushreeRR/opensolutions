@@ -1,4 +1,4 @@
-// app/entries/page.tsx
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -25,7 +25,7 @@ export default function EntriesPage() {
 
 
   useEffect(() => {
-    fetch('/api/products')
+    fetch('/api/solution')
       .then((response) => response.json())
       .then((data) => setEntries(data));
   }, []);
@@ -40,21 +40,12 @@ export default function EntriesPage() {
     setSelectedEntry(null);
   };
 
-  const handleClick = () => {
-    router.push("/form_improvise");
-  }
-
+  
   return (
     <div className="flex min-h-screen flex-col  bg-[#1c1c62] text-white">
-     <div style={{ marginTop: '20px' }}>
-  <p>Let us know if bringing changes in any of our products/services would make it more effective for the users!</p>
-  <div className='mt-0.5'>
-  <p>Submit your thoughts by clicking below</p>
-  </div>
-  <button onClick={handleClick} className="px-4 py-2 rounded-full bg-[#6666ee] text-white hover:bg-blue-600 mt-5">Click here to submit</button>
-</div>
+     
 
-      <h1 style={{marginTop: '75px', marginLeft: '20px', fontWeight: 'bold', fontSize: '22px' }}>Products to improvise:</h1>
+      <h1 style={{marginTop: '25px', marginLeft: '20px', fontWeight: 'bold', fontSize: '22px' }}>Solutions for the ideas:</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {entries.map((entry) => (
           <div 
@@ -89,6 +80,9 @@ export default function EntriesPage() {
         {selectedEntry && (
           <div style={{ color: 'black' }}>
             <h2><strong>Title:</strong>{selectedEntry.title}</h2>
+            <p><strong>User Name:</strong> {selectedEntry.name}</p>
+            <p><strong>Contact:</strong> {selectedEntry.contact}</p>
+            <p><strong>Email:</strong> {selectedEntry.email}</p>
             <p><strong>Description:</strong> {selectedEntry.description}</p>
           </div>
         )}

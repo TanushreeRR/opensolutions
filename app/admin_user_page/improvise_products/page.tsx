@@ -41,20 +41,18 @@ export default function EntriesPage() {
   };
 
   const handleClick = () => {
-    router.push("/form_improvise");
+    router.push("/admin_forms/products_form");
   }
 
   return (
     <div className="flex min-h-screen flex-col  bg-[#1c1c62] text-white">
      <div style={{ marginTop: '20px' }}>
-  <p>Let us know if bringing changes in any of our products/services would make it more effective for the users!</p>
-  <div className='mt-0.5'>
-  <p>Submit your thoughts by clicking below</p>
-  </div>
-  <button onClick={handleClick} className="px-4 py-2 rounded-full bg-[#6666ee] text-white hover:bg-blue-600 mt-5">Click here to submit</button>
+  
+  
+  <button onClick={handleClick} className="px-6 py-2 text-2xl rounded-full bg-[#4d4dd3] text-white hover:bg-blue-500 mt-5">Add new product</button>
 </div>
 
-      <h1 style={{marginTop: '75px', marginLeft: '20px', fontWeight: 'bold', fontSize: '22px' }}>Products to improvise:</h1>
+      <h1 style={{marginTop: '50px', marginLeft: '20px', fontWeight: 'bold', fontSize: '22px' }}>Modify products:</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {entries.map((entry) => (
           <div 
